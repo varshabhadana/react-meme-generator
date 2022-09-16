@@ -128,7 +128,11 @@ function App() {
               id="top-text"
               css={inputContainer}
               value={topText}
-              onChange={(event) => setTopText(event.target.value)}
+              onChange={(event) => {
+                setTopText(event.target.value);
+                setUrl(`
+              https://api.memegen.link/images/${memeTemplate}/${event.target.value}/${bottomText}.png`);
+              }}
             />
 
             <label htmlFor="bottom-text">Bottom text</label>
@@ -136,7 +140,11 @@ function App() {
               id="bottom-text"
               css={inputContainer}
               value={bottomText}
-              onChange={(event) => setBottomText(event.target.value)}
+              onChange={(event) => {
+                setBottomText(event.target.value);
+                setUrl(`
+              https://api.memegen.link/images/${memeTemplate}/${topText}/${event.target.value}.png`);
+              }}
             />
 
             <form
