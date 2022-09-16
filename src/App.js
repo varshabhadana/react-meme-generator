@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /** @jsxImportSource @emotion/react */
 
 import './App.css';
@@ -118,15 +117,17 @@ function App() {
       <div css={bodyContainer}>
         <div css={textContainer}>
           <div css={inputBlock}>
-            <label>Top Text</label>
+            <label htmlFor="top-text">Top Text</label>
             <input
+              id="top-text"
               css={inputContainer}
               value={topText}
               onChange={(event) => setTopText(event.target.value)}
             />
 
-            <label>Bottom Text</label>
+            <label htmlFor="bottom-text">Bottom Text</label>
             <input
+              id="bottom-text"
               css={inputContainer}
               value={bottomText}
               onChange={(event) => setBottomText(event.target.value)}
@@ -140,8 +141,9 @@ function App() {
           https://api.memegen.link/images/${memeTemplate}/${topText}/${bottomText}.png`);
               }}
             >
-              <label>Meme Template</label>
+              <label htmlFor="meme-template">Meme Template</label>
               <input
+                id="meme-template"
                 css={inputContainer}
                 value={memeTemplate}
                 onChange={(event) => setMemeTemplate(event.target.value)}
