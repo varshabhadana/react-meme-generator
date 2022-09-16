@@ -96,9 +96,9 @@ const headingStyle = css`
 `;
 
 function App() {
-  const [topText, setTopText] = useState('');
-  const [bottomText, setBottomText] = useState('');
-  const [memeTemplate, setMemeTemplate] = useState('');
+  const [topText, setTopText] = useState();
+  const [bottomText, setBottomText] = useState();
+  const [memeTemplate, setMemeTemplate] = useState('success');
   const [url, setUrl] = useState('https://api.memegen.link/images/success.png');
   const saveFile = () => {
     saveAs(
