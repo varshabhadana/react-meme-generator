@@ -121,7 +121,7 @@ function App() {
       <div css={bodyContainer}>
         <div css={textContainer}>
           <div css={inputBlock}>
-            <label htmlFor="top-text">Top Text</label>
+            <label htmlFor="top-text">Top text</label>
             <input
               id="top-text"
               css={inputContainer}
@@ -129,7 +129,7 @@ function App() {
               onChange={(event) => setTopText(event.target.value)}
             />
 
-            <label htmlFor="bottom-text">Bottom Text</label>
+            <label htmlFor="bottom-text">Bottom text</label>
             <input
               id="bottom-text"
               css={inputContainer}
@@ -145,7 +145,7 @@ function App() {
           https://api.memegen.link/images/${memeTemplate}/${topText}/${bottomText}.png`);
               }}
             >
-              <label htmlFor="meme-template">Meme Template</label>
+              <label htmlFor="meme-template">Meme template</label>
               <input
                 id="meme-template"
                 css={inputContainer}
