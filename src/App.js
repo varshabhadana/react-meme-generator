@@ -96,8 +96,8 @@ const headingStyle = css`
 `;
 
 function App() {
-  const [topText, setTopText] = useState();
-  const [bottomText, setBottomText] = useState();
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
   const [memeTemplate, setMemeTemplate] = useState('success');
   const [url, setUrl] = useState(
     'https://api.memegen.link/images/success/Hi/people.png',
@@ -130,8 +130,10 @@ function App() {
               value={topText}
               onChange={(event) => {
                 setTopText(event.target.value);
-                setUrl(`
-              https://api.memegen.link/images/${memeTemplate}/${event.target.value}/${bottomText}.png`);
+                const myurl = bottomText
+                  ? `https://api.memegen.link/images/${memeTemplate}/${event.target.value}/${bottomText}.png`
+                  : `https://api.memegen.link/images/${memeTemplate}/${event.target.value}.png`;
+                setUrl(myurl);
               }}
             />
 
