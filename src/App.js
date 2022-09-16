@@ -132,7 +132,7 @@ function App() {
                 setTopText(event.target.value);
                 const myurl = bottomText
                   ? `https://api.memegen.link/images/${memeTemplate}/${event.target.value}/${bottomText}.png`
-                  : `https://api.memegen.link/images/${memeTemplate}/${event.target.value}.png`;
+                  : `https://api.memegen.link/images/${memeTemplate}/${event.target.value}/_.png`;
                 setUrl(myurl);
               }}
             />
@@ -144,8 +144,10 @@ function App() {
               value={bottomText}
               onChange={(event) => {
                 setBottomText(event.target.value);
-                setUrl(`
-              https://api.memegen.link/images/${memeTemplate}/${topText}/${event.target.value}.png`);
+                const myurl = topText
+                  ? `https://api.memegen.link/images/${memeTemplate}/${topText}/${event.target.value}.png`
+                  : `https://api.memegen.link/images/${memeTemplate}/_/${event.target.value}/_.png`;
+                setUrl(myurl);
               }}
             />
 
