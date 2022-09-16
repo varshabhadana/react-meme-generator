@@ -10,6 +10,7 @@ const mainDiv = css`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: lightpink;
 `;
 
 const memeContainer = css`
@@ -89,6 +90,9 @@ const headingStyle = css`
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-weight: bold;
+  color: green;
+  font-size: 22px;
 `;
 
 function App() {
