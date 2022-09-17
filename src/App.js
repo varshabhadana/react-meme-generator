@@ -102,11 +102,22 @@ function App() {
   const [url, setUrl] = useState(
     'https://api.memegen.link/images/success/Hi/people.png',
   );
+
+  // Download image function
+
   const saveFile = () => {
     saveAs(
       `https://api.memegen.link/images/${memeTemplate}/${topText}/${bottomText}.png`,
     );
   };
+
+  // Remove special character from text input and template
+
+  function replaceSpecialCharacter(input) {
+    let newUrl = input.replaceAll('%20', '_');
+    newUrl = input.replaceAll(' ', '_');
+    return newUrl;
+  }
 
   return (
     <div css={mainDiv}>
@@ -123,6 +134,7 @@ function App() {
       <div css={bodyContainer}>
         <div css={textContainer}>
           <div css={inputBlock}>
+            {/* Input section for Top Text*/}
             <label htmlFor="top-text">Top text</label>
             <input
               id="top-text"
@@ -130,12 +142,15 @@ function App() {
               value={topText}
               onChange={(event) => {
                 setTopText(event.target.value);
-                const myurl = bottomText
-                  ? `https://api.memegen.link/images/${memeTemplate}/${event.target.value}/${bottomText}.png`
-                  : `https://api.memegen.link/images/${memeTemplate}/${event.target.value}/_.png`;
-                setUrl(myurl);
+
+                setUrl(
+                  `https://api.memegen.link/images/${replaceSpecialCharacter(
+                    memeTemplate,
+                  )}/${replaceSpecialCharacter(event.target.value)}.png`,
+                );
               }}
             />
+            {/* Input section for Bottom Text*/}
 
             <label htmlFor="bottom-text">Bottom text</label>
             <input
@@ -144,19 +159,28 @@ function App() {
               value={bottomText}
               onChange={(event) => {
                 setBottomText(event.target.value);
-                const myurl = topText
-                  ? `https://api.memegen.link/images/${memeTemplate}/${topText}/${event.target.value}.png`
-                  : `https://api.memegen.link/images/${memeTemplate}/_/${event.target.value}/_.png`;
-                setUrl(myurl);
+
+                setUrl(
+                  `https://api.memegen.link/images/${replaceSpecialCharacter(
+                    memeTemplate,
+                  )}/${replaceSpecialCharacter(
+                    topText,
+                  )}/${replaceSpecialCharacter(event.target.value)}.png`,
+                );
               }}
             />
+            {/* Input section for Meme Template with Onsubmit function */}
 
             <form
               css={memeForm}
               onSubmit={(event) => {
                 event.preventDefault();
                 setUrl(`
-          https://api.memegen.link/images/${memeTemplate}/${topText}/${bottomText}.png`);
+          https://api.memegen.link/images/${replaceSpecialCharacter(
+            memeTemplate,
+          )}/${replaceSpecialCharacter(topText)}/${replaceSpecialCharacter(
+                  bottomText,
+                )}.png`);
               }}
             >
               <label htmlFor="meme-template">Meme template</label>
@@ -169,16 +193,22 @@ function App() {
             </form>
           </div>
           <div css={btnContainer}>
+            {/* Generate Button to preview image */}
             <button
               css={buttonStyle}
               onClick={() => {
                 setUrl(
-                  `https://api.memegen.link/images/${memeTemplate}/${topText}/${bottomText}.png`,
+                  `https://api.memegen.link/images/${replaceSpecialCharacter(
+                    memeTemplate,
+                  )}/${replaceSpecialCharacter(
+                    topText,
+                  )}/${replaceSpecialCharacter(bottomText)}.png`,
                 );
               }}
             >
               Generate
             </button>
+            {/* Download Button to download image with text */}
             <button css={buttonStyle} onClick={saveFile}>
               Download
             </button>
