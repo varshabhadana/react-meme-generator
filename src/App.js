@@ -141,12 +141,12 @@ function App() {
               css={inputContainer}
               value={topText}
               onChange={(event) => {
-                setTopText(event.target.value);
+                setTopText(event.currentTarget.value);
 
                 setUrl(
                   `https://api.memegen.link/images/${replaceSpecialCharacter(
                     memeTemplate,
-                  )}/${replaceSpecialCharacter(event.target.value)}.png`,
+                  )}/${replaceSpecialCharacter(event.currentTarget.value)}.png`,
                 );
               }}
             />
@@ -158,7 +158,7 @@ function App() {
               css={inputContainer}
               value={bottomText}
               onChange={(event) => {
-                setBottomText(event.target.value);
+                setBottomText(event.currentTarget.value);
 
                 setUrl(
                   `https://api.memegen.link/images/${replaceSpecialCharacter(
@@ -188,7 +188,7 @@ function App() {
                 id="meme-template"
                 css={inputContainer}
                 value={memeTemplate}
-                onChange={(event) => setMemeTemplate(event.target.value)}
+                onChange={(event) => setMemeTemplate(event.currentTarget.value)}
               />
             </form>
           </div>
